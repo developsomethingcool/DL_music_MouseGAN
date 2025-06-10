@@ -12,7 +12,7 @@ Statistical Analysis: Detailed statistics for each generated track
 Interactive Generation: Easy-to-use functions for experimentation
 
 
-#Project Structure
+Project Structure
 ```
 musegan-pytorch/
 ├── README.md
@@ -24,7 +24,7 @@ musegan-pytorch/
     ├── generated_music_sample_0.npy
     └── ...
 ```    
-##Quick Start
+Quick Start
 Prerequisites
 bashpip install torch torchvision numpy matplotlib pretty_midi pathlib
 Basic Usage
@@ -34,7 +34,7 @@ Load the model and generate music:
 python# Initialize generator
 generator = MuseGANGeneratorTorch("generator_final2.pth", verbose=True)
 
-###Load model
+Load model
 if generator.load_model():
     # Generate 4 music samples
     logits = generator.generate_music(n_samples=4, temperature=1.0)
@@ -43,15 +43,15 @@ if generator.load_model():
     # Save as MIDI
     generator.save_as_midi(processed_music, "my_music.mid")
 
-###Visualize the results:
+Visualize the results:
 
 python# Plot piano roll for Piano track
 generator.plot_pianoroll(processed_music, sample_idx=0, track_idx=1)
 
-###Compare all tracks side by side
+Compare all tracks side by side
 generator.plot_track_comparison(processed_music, sample_idx=0)
 
-###Analyze statistics
+Analyze statistics
 stats = generator.analyze_music_statistics(processed_music)
 Model Architecture
 The generator uses a 3D CNN architecture with the following specifications:
@@ -101,11 +101,11 @@ music = generate_and_visualize(
 
 
 
-###Custom Visualization
+Custom Visualization
 python# Extract piano roll for specific track
 piano_roll = generator.music_to_pianoroll(processed_music, track_idx=1)
 
-###Custom plotting
+Custom plotting
 plt.figure(figsize=(12, 6))
 plt.imshow(piano_roll.T, aspect='auto', origin='lower', cmap='viridis')
 plt.title('Custom Piano Roll Visualization')
@@ -127,14 +127,14 @@ Tempo: Configurable (default 120 BPM)
 
 
     
-#References
+References
 
 Original MuseGAN paper: MuseGAN: Multi-track Sequential Generative Adversarial Networks for Symbolic Music Generation and Accompaniment
 PyTorch documentation: pytorch.org
 Pretty MIDI: pretty_midi documentation
 
-#Contributing
+Contributing
 Feel free to submit issues, feature requests, or pull requests to improve this implementation.
 
-#License
+License
 This project is open source. Please check the original MuseGAN repository for licensing details.
